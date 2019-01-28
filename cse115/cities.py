@@ -17,9 +17,9 @@
 import csv
 
 
-def read_cities_file(filename):
+def read_cities_file(_filename):
     all_cities = []
-    with open(filename) as file:
+    with open(_filename) as file:
         for row in csv.reader(file):
             if row[0] == "Country":
                 continue
@@ -57,6 +57,26 @@ def cmp(item):
     return item[1]
 
 
+def read_country_names_file(filename):
+    code_to_name = {}
+    with open(filename) as names_file:
+        for line in names_file:
+            if line.startswith(";;;"):
+                continue
+            splits = line.strip().split(';')
+            code_to_name[splits[1]] = splits[0]
+    return code_to_name
+
+
+def get_names(country_codes):
+    codes_filename = "cities/country_codes.txt"
+    code_to_name = read_country_names_file(codes_filename)
+    country_names = []
+    for code in country_codes:
+        country_names.append(code_to_name[code.upper()])
+    return country_names
+
+
 def sort_by_population(cities_filename):
     # load the file into a data structure
     cities = read_cities_file(cities_filename)
@@ -70,9 +90,17 @@ def sort_by_population(cities_filename):
     # sort countries by population
     country_populations.sort(key=cmp, reverse=True)
 
-    # print country codes of top ten countries by population
+    # get country codes of top ten countries by population
+    top_ten_codes = []
     for i in range(10):
-        print(country_populations[i][0])
+        top_ten_codes.append(country_populations[i][0])
+
+    # get names from codes
+    top_ten_names = get_names(top_ten_codes)
+
+    # print the top 10 list
+    for country in top_ten_names:
+        print(country)
 
 
 filename = "cities/WorldCitiesPop.csv"
