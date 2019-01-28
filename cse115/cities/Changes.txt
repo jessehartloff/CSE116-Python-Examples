@@ -1,0 +1,9 @@
+This original worldcitiespop.txt.gz was downloaded from
+
+	http://download.maxmind.com/download/worldcities/worldcitiespop.txt.gz
+	
+on 10-22-2017.  It was cleaned as follows, to produce WordCitiesPop.csv:
+
+	iconv -c worldcitiespop.txt > WorldCities.txt
+	grep -v ",," WorldCities.csv  > WorldCitiesPop.csv
+	
