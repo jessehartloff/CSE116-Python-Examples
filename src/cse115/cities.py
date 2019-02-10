@@ -102,6 +102,7 @@ def sort_by_population(cities_filename):
     for country in top_ten_names:
         print(country)
 
-
+# IntelliJ runs Python files from its own directory, not the project root like it does for Scala
+# File paths should be relative to the file location in Python
 filename = "cities/WorldCitiesPop.csv"
 sort_by_population(filename)
