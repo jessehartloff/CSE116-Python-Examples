@@ -17,8 +17,8 @@ if __name__ == '__main__':
 
 # Run this main method to see a runtime error, but the program does run
 # "adding to state" will be printed and then the program crashes
-if __name__ == '__main__':
-    example_object = RuntimeErrorExample(5)
-    example_object.add_to_state("ten")
-    print(example_object.state)
+# if __name__ == '__main__':
+#     example_object = RuntimeErrorExample(5)
+#     example_object.add_to_state("ten")
+#     print(example_object.state)
 
