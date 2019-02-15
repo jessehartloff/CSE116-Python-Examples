@@ -1,5 +1,4 @@
 
-
 class Point2D:
 
     # __init__ defines the constructor
